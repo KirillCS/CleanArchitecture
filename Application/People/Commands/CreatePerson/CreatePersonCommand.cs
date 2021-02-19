@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Application.People.Commands.CreatePerson
 {
-    class CreatePersonCommand : IRequest<int>
+    public class CreatePersonCommand : IRequest<int>
     {
         public string Name { get; set; }
 
@@ -19,7 +19,7 @@ namespace Application.People.Commands.CreatePerson
         public DateTime? BirthDate { get; set; }
     }
 
-    class CreatePersonCommandHandler : IRequestHandler<CreatePersonCommand, int>
+    public class CreatePersonCommandHandler : IRequestHandler<CreatePersonCommand, int>
     {
         private readonly IApplicationDbContext context;
 

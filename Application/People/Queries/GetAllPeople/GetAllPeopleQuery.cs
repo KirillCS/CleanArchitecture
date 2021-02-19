@@ -6,12 +6,12 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.People.Queries
+namespace Application.People.Queries.GetAllPeople
 {
-    class GetAllPeopleQuery : IRequest<IEnumerable<Person>>
+    public class GetAllPeopleQuery : IRequest<IEnumerable<Person>>
     { }
 
-    class GetAllPeopleQueryHandler : IRequestHandler<GetAllPeopleQuery, IEnumerable<Person>>
+    public class GetAllPeopleQueryHandler : IRequestHandler<GetAllPeopleQuery, IEnumerable<Person>>
     {
         private readonly IApplicationDbContext context;
 
