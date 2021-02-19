@@ -11,16 +11,20 @@ namespace Infrastructure.Persistence
     {
         public DbSet<Person> People { get; set; }
 
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options)
+        { }
+
         public async Task<int> SaveChanges(CancellationToken cancellationToken)
         {
             return await SaveChangesAsync(cancellationToken);
         }
 
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-            base.OnModelCreating(builder);
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
