@@ -2,7 +2,7 @@
 
 namespace Application.People.Commands.CreatePerson
 {
-    class CreatePersonCommandValidator : AbstractValidator<CreatePersonCommand>
+    public class CreatePersonCommandValidator : AbstractValidator<CreatePersonCommand>
     {
         public CreatePersonCommandValidator()
         {
@@ -13,6 +13,8 @@ namespace Application.People.Commands.CreatePerson
             RuleFor(c => c.LastName)
                 .NotNull().NotEmpty().WithMessage("Last name cannot be null or empty")
                 .MaximumLength(128).WithMessage("Maximum length of last name is 128 characters");
+
+            RuleFor(c => c.Sex).IsInEnum().WithMessage("Incorrect value of sex property");
         }
     }
 }

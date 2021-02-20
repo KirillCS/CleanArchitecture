@@ -2,7 +2,7 @@
 
 namespace Application.People.Commands.UpdatePerson
 {
-    class UpdatePersonCommandValidator : AbstractValidator<UpdatePersonCommand>
+    public class UpdatePersonCommandValidator : AbstractValidator<UpdatePersonCommand>
     {
         public UpdatePersonCommandValidator()
         {

@@ -1,4 +1,6 @@
+using Application.Common.Behaviours;
 using Application.Common.Interfaces;
+using FluentValidation;
 using Infrastructure.Persistence;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -26,7 +28,10 @@ namespace WebUI
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
             services.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
-            services.AddMediatR(AppDomain.CurrentDomain.Load("Application"));
+            var applicationAssymbly = AppDomain.CurrentDomain.Load(nameof(Application));
+            services.AddMediatR(applicationAssymbly);
+            services.AddValidatorsFromAssembly(applicationAssymbly);
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

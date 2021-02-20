@@ -4,7 +4,10 @@ using Application.People.Commands.DeletePerson;
 using Application.People.Commands.UpdatePerson;
 using Application.People.Queries.GetAllPeople;
 using Microsoft.AspNetCore.Mvc;
+using FluentValidation;
 using System.Threading.Tasks;
+using System.Linq;
+using System.Text;
 
 namespace WebUI.Controllers
 {
@@ -20,7 +23,16 @@ namespace WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> CreatePerson(CreatePersonCommand command)
         {
-            await Mediator.Send(command);
+            try
+            {
+                await Mediator.Send(command);
+            }
+            catch (ValidationException ex)
+            {
+                var message = ex.Errors.Aggregate(new StringBuilder(), (result, error) => result.Append($"{error.PropertyName}: {error.ErrorMessage}\n"));
+                return BadRequest(message.ToString());
+            }
+
             return NoContent();
         }
 
@@ -30,6 +42,11 @@ namespace WebUI.Controllers
             try
             {
                 await Mediator.Send(command);
+            }
+            catch (ValidationException ex)
+            {
+                var message = ex.Errors.Aggregate(new StringBuilder(), (result, error) => result.Append($"{error.PropertyName}: {error.ErrorMessage}\n"));
+                return BadRequest(message.ToString());
             }
             catch (EntityNotFoundException)
             {
@@ -45,6 +62,11 @@ namespace WebUI.Controllers
             try
             {
                 await Mediator.Send(command);
+            }
+            catch (ValidationException ex)
+            {
+                var message = ex.Errors.Aggregate(new StringBuilder(), (result, error) => result.Append($"{error.PropertyName}: {error.ErrorMessage}\n"));
+                return BadRequest(message.ToString());
             }
             catch (EntityNotFoundException)
             {
