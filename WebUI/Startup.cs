@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System;
+using WebUI.Filters;
 
 namespace WebUI
 {
@@ -32,7 +33,7 @@ namespace WebUI
             services.AddMediatR(applicationAssymbly);
             services.AddValidatorsFromAssembly(applicationAssymbly);
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
-            services.AddControllers();
+            services.AddControllers(options => options.Filters.Add<ApiControllerExceptionFilterAttribute>());
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebUI", Version = "v1" });
