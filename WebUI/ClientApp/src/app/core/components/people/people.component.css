@@ -1,0 +1,19 @@
+.list--people {
+  list-style: none;
+}
+
+.list--people__item {
+  cursor: pointer;
+  margin: 0.6rem 0.3rem;
+  padding: 0.8rem 1.2rem;
+  background-color: white;
+  box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.25);
+}
+
+.list--people__item:hover {
+  box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.18);
+}
+
+.list--people__item:active {
+  box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.1);
+}
