@@ -1,10 +1,20 @@
+#adding-button {
+  width: 100%;
+  margin: 0.8rem 0;
+}
+
 .list--people {
   list-style: none;
 }
 
 .list--people__item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  outline: none;
   cursor: pointer;
-  margin: 0.6rem 0.3rem;
+  margin: 0.6rem 0;
   padding: 0.8rem 1.2rem;
   background-color: white;
   box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.25);
@@ -16,4 +26,15 @@
 
 .list--people__item:active {
   box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.1);
+}
+
+.person-controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: inherit;
+}
+
+.person-controls__item {
+  margin-left: 0.4rem;
 }
