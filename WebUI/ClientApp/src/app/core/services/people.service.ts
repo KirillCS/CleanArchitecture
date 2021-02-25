@@ -10,6 +10,10 @@ export class PeopleService {
   constructor(private http: HttpClient) {
   }
 
+  get(personId: number): Observable<any> {
+    return this.http.get(`${this.url}/${personId}`);
+  }
+
   public getAll(): Observable<any> {
     return this.http.get(this.url);
   }
@@ -19,7 +23,6 @@ export class PeopleService {
   }
 
   public deletePerson(personId: number): Observable<any> {
-    const params = new HttpParams().set('id', personId.toString());
-    return this.http.delete(this.url, { params });
+    return this.http.delete(`${this.url}/${personId}`);
   }
 }

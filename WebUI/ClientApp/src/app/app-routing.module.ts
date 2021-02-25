@@ -8,7 +8,7 @@ import { EditingComponent } from './core/components/people/editing/editing.compo
 
 const routes: Routes = [
   { path: 'people', component: PeopleComponent, },
-  { path: 'people/details', component: DetailsComponent },
+  { path: 'people/details/:personId', component: DetailsComponent },
   { path: 'people/add', component: AddingComponent },
   { path: 'people/edit', component: EditingComponent },
   { path: '', redirectTo: '/people', pathMatch: 'full' }

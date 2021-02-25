@@ -1,7 +1,7 @@
 <div class="container--small">
   <button id="adding-button" class="btn btn--primary" routerLink="add">Add</button>
   <ul class="list--people">
-    <li class="list--people__item" routerLink="details" *ngFor="let person of people">
+    <li class="list--people__item" [routerLink]="['details', person.id]" *ngFor="let person of people">
       {{ person.name }} {{ person.lastName }}
       <div class="person-controls">
         <button class="btn btn--warning btn--sm person-controls__item" routerLink="edit">Edit</button>
