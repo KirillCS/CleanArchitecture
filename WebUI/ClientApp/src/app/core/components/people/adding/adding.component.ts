@@ -21,17 +21,17 @@ export class AddingComponent implements OnInit {
     this.person = new Person();
   }
 
-  public goBack() {
+  public goBack(): void {
     this.location.back();
   }
 
-  public submitHandler(isValid: boolean) {
+  public submitHandler(isValid: boolean): void {
     if (isValid) {
       this.addPerson();
     }
   }
 
-  private addPerson() {
+  private addPerson(): void {
     this.peopleService.addPerson(this.person).subscribe();
     this.goBack();
   }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { PeopleService } from 'src/app/core/services/people.service';
-import { Person } from '../../models/person';
+import { Person } from 'src/app/core/models/person';
 
 @Component({
   selector: 'app-people',
@@ -17,5 +17,13 @@ export class PeopleComponent implements OnInit {
     this.peopleService.getAll().subscribe((data: Person[]) => {
         this.people = data;
     })
+  }
+
+  public deleteButtonClickHandler(personId: number): void {
+    this.deletePerson(personId);
+  }
+  
+  private deletePerson(personId: number): void {
+    console.log(personId);
   }
 }

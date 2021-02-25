@@ -5,7 +5,7 @@
       {{ person.name }} {{ person.lastName }}
       <div class="person-controls">
         <button class="btn btn--warning btn--sm person-controls__item" routerLink="edit">Edit</button>
-        <button class="btn btn--danger btn--sm  person-controls__item">Delete</button>
+        <button class="btn btn--danger btn--sm  person-controls__item" click-stop-propagation (click)="deleteButtonClickHandler(person.id)">Delete</button>
       </div>
     </li>
   </ul>
