@@ -2,28 +2,40 @@
   <div class="card">
     <div class="card__title">Creating new person</div>
     <div class="card__body">
-        <div class="form">
-          <input class="form__item" type="text" placeholder="Name">
-          <input class="form__item" type="text" placeholder="Second name">
+        <form class="form" #form="ngForm" (ngSubmit)="submitHandler(form.valid)">
+          <div class="form__item">
+            <input class="form__item" name="name" type="text" autocomplete="off" placeholder="Name" required maxlength="128" [(ngModel)]="person.name" #name="ngModel">
+            <div class="invalid-group" *ngIf="(name.touched && name.invalid) || (form.submitted && form.invalid)">
+              <div class="invalid-group__item" *ngIf="name.errors?.required">Name is a required field.</div>
+              <div class="invalid-group__item" *ngIf="name.errors?.maxlength">Maximum length of name is {{ name.errors.maxlength.requiredLength }} characters.</div>
+            </div>
+          </div>
+          <div class="form__item">
+            <input class="form__item" name="lastName" type="text" autocomplete="off" placeholder="Second name" required maxlength="128" [(ngModel)]="person.lastName" #lastName="ngModel">
+            <div class="invalid-group" *ngIf="(lastName.touched && lastName.invalid) || (form.submitted && form.invalid)">
+              <div class="invalid-group__item" *ngIf="lastName.errors?.required">Last name is a required field.</div>
+              <div class="invalid-group__item" *ngIf="lastName.errors?.maxlength">Maximum length of last name is {{ lastName.errors.maxlength.requiredLength }} characters.</div>
+            </div>
+          </div>
           <div class="form__item">
             <div class="form__check">
-              <input id="male" type="radio" name="sex" checked>
+              <input id="male" name="sex" type="radio" [value]="sex.Male" [(ngModel)]="person.sex">
               <label class="form__check__label" for="male">Male</label>
             </div>
             <div class="form__check">
-              <input id="female" type="radio" name="sex">
+              <input id="female" name="sex" type="radio" [value]="sex.Female" [(ngModel)]="person.sex">
               <label class="form__check__label" for="female">Female</label>
             </div>
           </div>
           <div class="form__item">
             <label for="birthdate" class="form__item__label">Birthdate:</label>
-            <input id="birthdate" class="form__item__input" type="date" placeholder="Birthdate">
+            <input id="birthdate" name="birthDate" class="form__item__input" type="date" placeholder="Birthdate" autocomplete="off" [(ngModel)]="person.birthDate">
           </div>
           <div class="form__submit">
-            <button class="btn btn--secondary">Cancel</button>
+            <button class="btn btn--secondary" (click)="goBack()">Cancel</button>
             <button class="btn btn--primary">Add</button>
           </div>
-        </div>
+        </form>
     </div>
   </div>
 </div>

@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+
+import { Person } from 'src/app/core/models/person';
+import { Sex } from 'src/app/core/enums/sex';
+import { PeopleService } from 'src/app/core/services/people.service';
 
 @Component({
   selector: 'app-adding',
@@ -6,10 +11,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./adding.component.css']
 })
 export class AddingComponent implements OnInit {
+  @Input()
+  public person: Person
+  public sex = Sex;
 
-  constructor() { }
+  constructor(private location: Location, private peopleService: PeopleService) { }
 
   ngOnInit(): void {
+    this.person = new Person();
   }
 
+  public goBack() {
+    this.location.back();
+  }
+
+  public submitHandler(isValid: boolean) {
+    if (isValid) {
+      this.addPerson();
+    }
+  }
+
+  private addPerson() {
+    this.peopleService.addPerson(this.person).subscribe();
+    this.goBack();
+  }
 }

@@ -24,7 +24,6 @@ input {
   border: none;
   border-bottom: 1px solid rgb(220, 220, 220);
   caret-color: rgb(220, 220, 220);
-  margin: 0.4rem 0;
   padding: 0.35rem 0.1rem;
 }
 
@@ -53,7 +52,7 @@ input:focus {
 
 .form__item {
   display: block;
-  margin: 0.5rem 0;
+  margin: 0.3rem 0;
   width: 100%;
   background-color: inherit;
 }
@@ -110,6 +109,11 @@ input:focus {
   box-shadow: 0 2px 7px 0 #000000d3;
 }
 
+.btn:disabled {
+  cursor: default;
+  box-shadow: none;
+}
+
 .btn--primary {
   color: white;
   background-color: #0b7cee;
@@ -122,6 +126,11 @@ input:focus {
 
 .btn--primary:active {
   box-shadow: 0 2px 7px 0 #0f76ddd3;
+}
+
+.btn--primary:disabled {
+  cursor: default;
+  box-shadow: none;
 }
 
 .btn--secondary {
@@ -138,6 +147,11 @@ input:focus {
   box-shadow: 0 2px 7px 0 #6C757Dd3;
 }
 
+.btn--secondary:disabled {
+  cursor: default;
+  box-shadow: none;
+}
+
 .btn--danger {
   color: white;
   background-color: #be272f;
@@ -152,6 +166,11 @@ input:focus {
   box-shadow: 0 2px 7px 0 #be272fd3;
 }
 
+.btn--danger:disabled {
+  cursor: default;
+  box-shadow: none;
+}
+
 .btn--warning {
   color: white;
   background-color: #e99f01;
@@ -164,6 +183,11 @@ input:focus {
 
 .btn--warning:active {
   box-shadow: 0 2px 7px 0 #e99f01d3;
+}
+
+.btn--warning:disabled {
+  cursor: default;
+  box-shadow: none;
 }
 
 .btn--sm {
@@ -202,4 +226,16 @@ input:focus {
 .button--submit {
   margin: 1rem 0;
   margin-left: auto;
+}
+
+.invalid-group {
+  display: block;
+  background-color: inherit;
+}
+
+.invalid-group__item {
+  display: block;
+  background-color: inherit;
+  color: #BE272F;
+  font-size: 0.8rem;
 }

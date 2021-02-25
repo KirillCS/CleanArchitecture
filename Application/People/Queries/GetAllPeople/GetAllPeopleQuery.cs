@@ -3,6 +3,7 @@ using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -22,7 +23,7 @@ namespace Application.People.Queries.GetAllPeople
 
         public async Task<IEnumerable<Person>> Handle(GetAllPeopleQuery request, CancellationToken cancellationToken)
         {
-            var people = await context.People.ToListAsync();
+            var people = await context.People.OrderByDescending(p => p.Id).ToListAsync();
 
             return people;
         }
