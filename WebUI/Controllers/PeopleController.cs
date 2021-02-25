@@ -17,7 +17,7 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreatePerson(CreatePersonCommand command)
+        public async Task<IActionResult> CreatePerson([FromBody]CreatePersonCommand command)
         {
             await Mediator.Send(command);
 
@@ -25,7 +25,7 @@ namespace WebUI.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdatePerson(UpdatePersonCommand command)
+        public async Task<IActionResult> UpdatePerson([FromBody]UpdatePersonCommand command)
         {
             await Mediator.Send(command);
 
@@ -33,7 +33,7 @@ namespace WebUI.Controllers
         }
 
         [HttpDelete]
-        public async Task<IActionResult> DeletePerson(DeletePersonCommand command)
+        public async Task<IActionResult> DeletePerson([FromQuery]DeletePersonCommand command)
         {
             await Mediator.Send(command);
 

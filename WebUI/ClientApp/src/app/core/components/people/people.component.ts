@@ -14,16 +14,20 @@ export class PeopleComponent implements OnInit {
   constructor(private peopleService: PeopleService) { }
 
   ngOnInit(): void {
-    this.peopleService.getAll().subscribe((data: Person[]) => {
-        this.people = data;
-    })
+    this.refreshPeople();
   }
 
   public deleteButtonClickHandler(personId: number): void {
     this.deletePerson(personId);
   }
-  
+
   private deletePerson(personId: number): void {
-    console.log(personId);
+    this.peopleService.deletePerson(personId).subscribe(() => this.refreshPeople());
+  }
+
+  private refreshPeople(): void {
+    this.peopleService.getAll().subscribe((data: Person[]) => {
+      this.people = data;
+    })
   }
 }
