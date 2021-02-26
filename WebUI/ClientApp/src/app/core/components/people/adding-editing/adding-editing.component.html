@@ -1,6 +1,6 @@
 <div class="container--small">
   <div class="card">
-    <div class="card__title">Creating new person</div>
+    <div class="card__title">{{title}}</div>
     <div class="card__body">
         <form class="form" #form="ngForm" (ngSubmit)="submitHandler(form.valid)">
           <div class="form__item">
@@ -29,11 +29,11 @@
           </div>
           <div class="form__item">
             <label for="birthdate" class="form__item__label">Birthdate:</label>
-            <input id="birthdate" name="birthDate" class="form__item__input" type="date" placeholder="Birthdate" autocomplete="off" [(ngModel)]="person.birthDate">
+            <input id="birthdate" name="birthDate" class="form__item__input" type="date" placeholder="Birthdate" autocomplete="off" [ngModel]="person.birthDate | date:'yyyy-MM-dd'" (ngModelChange)="person.birthDate = $event">
           </div>
           <div class="form__submit">
-            <button class="btn btn--secondary" (click)="goBack()">Cancel</button>
-            <button class="btn btn--primary">Add</button>
+            <button class="btn btn--secondary" type="button" (click)="goBack()">Cancel</button>
+            <button class="btn btn--primary" type="submit">{{submitButtonName}}</button>
           </div>
         </form>
     </div>

@@ -4,7 +4,7 @@
     <li class="list--people__item" [routerLink]="['details', person.id]" *ngFor="let person of people">
       {{ person.name }} {{ person.lastName }}
       <div class="person-controls">
-        <button class="btn btn--warning btn--sm person-controls__item" routerLink="edit">Edit</button>
+        <button class="btn btn--warning btn--sm person-controls__item" click-stop-propagation [routerLink]="['edit', person.id]">Edit</button>
         <button class="btn btn--danger btn--sm  person-controls__item" click-stop-propagation (click)="deleteButtonClickHandler(person.id)">Delete</button>
       </div>
     </li>

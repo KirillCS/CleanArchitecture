@@ -16,7 +16,9 @@ export class DetailsComponent implements OnInit {
   public person: Person = new Person();
   public sexToString = SexToString;
 
-  constructor(private route: ActivatedRoute, private peopleService: PeopleService, private location: Location) { }
+  constructor(private route: ActivatedRoute, 
+              private peopleService: PeopleService, 
+              private location: Location) { }
 
   ngOnInit(): void {
     this.refresh();
